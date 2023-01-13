@@ -35,8 +35,6 @@ const Navber = () => {
                     </div>
                 </div>
             </header>
-
-            <Catagory/>
         </>
     )
 }
