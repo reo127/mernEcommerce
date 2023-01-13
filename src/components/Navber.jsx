@@ -1,5 +1,5 @@
 import React from 'react'
-import Catagory from './Catagory'
+import { Link } from 'react-router-dom';
 
 const Navber = () => {
     return (
@@ -9,9 +9,9 @@ const Navber = () => {
                     <div className='flex items-center justify-center'>
                         <img className='cursor-pointer' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAADtklEQVR4nN2YS08TURiGm8hO/RleokZ/AhuhM+0UV0ZRo2zAJcjNBSZubDu3kuiic0zQBJdsIFHDQgQ04JyZ6cLAAsQbakTDRuhMq4Y2x7xtA0JBpqWdEk/yJpNpe3j4znc9Pt//uhqj9Awv6V2Cao0KqrHIyTTlF/UMhGdBNT/iM7+od+K7nkA1SVOHeZH2BhXjS1MsYbc9evvz1pNlJk0k2T39N4tbmZzwjHd9T5ZZ26N36aZ+yw4o9DMn0+762xOHKg5Wf3uijhNpNy8bdsvD+VT4+QojiaxraYksC4+tsJYH8w72gOWxZ0XgGsPTxwXFXLh8f9ZWXzolgZFtpLxwWLM2awcV841fmjq2J7iATM8FZMO5ObKU3SsY2aLe4a9Z7N0QfRUqC44TjWtB1UhFx5MVBSN/KTq+yoKKkeKj9GrJlgMcjqNacOSvIwdkozQtuPY5mL6aliNbFHm+ygIydfiIcfSfcIgsBEQ1fI7s5pMjS5mAYsz/M7obJb3rEplNeg1HCmrWZhxeNDp3TsKyUZFUQsr1x0mH8bKR3DaZo0IgCdcKjhTUMjDvoOIUAaJ8RcZKqxCkCkLFCajGp82+F6VnUFs1Fxt8t1nZ65vNdt0fDKF+y2kIT59aB0SdReF38x/ij5S7llwAQq2Db9OcSDvWAYV+axRdSa2PlxSELiikmk83/E81F8VJ7xIz2UXieJKFVOv9OmBAog56uFqDkYLuvvrFeJna64DoguNmxtWPqx0kJJFlcXONcRJdKwvQiyCJbwXc90cc3O9BIqjWKEK71mCkoL7HW9IMhpjrLhO1F0HSNriQ5iW9faOSyPppjIbaPggSDaUuZjl+0Ti5qR4LMXMRhbrWx3vn2Y/iZiFvRdqNubXWgNcG5hw0zkWAaBLRsHoxKJEdJE/auYa1QXl9sAgwl7BlvbNZq03LryWy7EJ8xtnUxWxjxTpM/BiqvQbsGf6KoWnu/NDQgR0Bc1aUpo7lx85Vz+AiYyuMl6hzVtKP+NwsXEcEFG8Gdzk3uJtpv0iDvlIWriMAiaG6mpYLqkaKk/UrvnIWriMw8fdU2Ce1gs/hWEu2XJElI8ZRTPzN2oyNuXXPRzpps4vajI2AcO1zri4wJXoDOarlwZyDiqOVaLHw2EouCWMPv6S37xqtZYIeQsUJKvRTU8yyMX2hC0J7lLsCNjM54Rnv0JW0Di6kQzHTEVRzERWiKlfA2y0Uc06kHYJqPhVU80Pen/KX6GiA8Q4tE77DhekJT6Bqsf4AKusqYO+qxoQAAAAASUVORK5CYII=" alt='Menu bar' />
 
-                        <a className="flex title-font font-bold items-center text-white mb-4 md:mb-0" href='/' >
+                        <Link className="flex title-font font-bold items-center text-white mb-4 md:mb-0" to='/' >
                             <span className="ml-3 text-xl">FastCart</span>
-                        </a>
+                        </Link>
                     </div>
 
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
@@ -30,8 +30,8 @@ const Navber = () => {
                         </fieldset>
                     </nav>
                     <div className="">
-                        <button className=" inline-flex items-center bg-gray-100 border-0 font-semibold py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Register </button>
-                        <button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button>
+                        <Link to='/signup'><button className=" inline-flex items-center bg-gray-100 border-0 font-semibold py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Register </button></Link>
+                        <Link to='/login'><button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button></Link> 
                     </div>
                 </div>
             </header>

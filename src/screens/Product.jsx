@@ -1,4 +1,4 @@
-import image from '../assets/images/1.jpg'
+
 import React from 'react';
 
 
