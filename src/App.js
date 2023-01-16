@@ -8,6 +8,7 @@ import Product from './screens/Product';
 import Catagory from './components/Catagory';
 import Footer from './components/Footer';
 import CatagoryList from './screens/CatagoryList';
+import CheckOut from './screens/CheckOut';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/product' element={<> <Navber /> <Product /> </>} />
         <Route path='/catagorylist' element={<> <Navber /> <CatagoryList /> <Footer /> </>} />
+        <Route path='/checkout' element={<> <Navber /> <CheckOut/> <Footer /> </>} />
       </Routes>
 
     </div>
