@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Product = () => {
@@ -21,7 +22,7 @@ const Product = () => {
                             <div class="flex mt-12">
                                 <span class="mr-4 title-font font-medium text-2xl text-gray-900">$58.00</span>
                                 <div className='flex items-center justify-center'>
-                                    <button class="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold">BUY</button>
+                                    <Link to='/checkout'><button class="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold">BUY</button></Link> 
                                     <button class="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold">ADD TO CART</button>
 
                                 </div>

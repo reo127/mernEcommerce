@@ -9,6 +9,7 @@ import Catagory from './components/Catagory';
 import Footer from './components/Footer';
 import CatagoryList from './screens/CatagoryList';
 import CheckOut from './screens/CheckOut';
+import Search from './screens/Search';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/product' element={<> <Navber /> <Product /> </>} />
         <Route path='/catagorylist' element={<> <Navber /> <CatagoryList /> <Footer /> </>} />
         <Route path='/checkout' element={<> <Navber /> <CheckOut/> <Footer /> </>} />
+        <Route path='/search' element={<> <Navber /> <Search/> <Footer /> </>} />
       </Routes>
 
     </div>
