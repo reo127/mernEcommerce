@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import CatagoryList from './screens/CatagoryList';
 import CheckOut from './screens/CheckOut';
 import Search from './screens/Search';
+import Cart from './screens/Cart';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/catagorylist' element={<> <Navber /> <CatagoryList /> <Footer /> </>} />
         <Route path='/checkout' element={<> <Navber /> <CheckOut/> <Footer /> </>} />
         <Route path='/search' element={<> <Navber /> <Search/> <Footer /> </>} />
+        <Route path='/cart' element={<> <Navber /> <Cart/> <Footer /> </>} />
       </Routes>
 
     </div>
