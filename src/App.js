@@ -12,6 +12,7 @@ import CheckOut from './screens/CheckOut';
 import Search from './screens/Search';
 import Cart from './screens/Cart';
 import Profile from './screens/Profile';
+import UserOrders from './screens/UserOrders';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/search' element={<> <Navber /> <Search/> <Footer /> </>} />
         <Route path='/cart' element={<> <Navber /> <Cart/> <Footer /> </>} />
         <Route path='/profile' element={<> <Navber /> <Profile /> <Footer /> </>} />
+        <Route path='/orders' element={<> <Navber /> <UserOrders/> <Footer /> </>} />
       </Routes>
 
     </div>
