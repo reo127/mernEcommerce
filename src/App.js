@@ -14,6 +14,7 @@ import Cart from './screens/Cart';
 import Profile from './screens/Profile';
 import UserOrders from './screens/UserOrders';
 import AddProduct from './screens/AddProduct';
+import AdminNavber from './components/AdminNavber';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path='/cart' element={<> <Navber /> <Cart/> <Footer /> </>} />
         <Route path='/profile' element={<> <Navber /> <Profile /> <Footer /> </>} />
         <Route path='/orders' element={<> <Navber /> <UserOrders/> <Footer /> </>} />
-        <Route path='/admin/adminproducts' element={<> <Navber /> <AddProduct/>  </>} />
+        <Route path='/admin/addproduct' element={<> <Navber /> <AdminNavber/> <AddProduct/>  </>} />
       </Routes>
 
     </div>
