@@ -15,6 +15,9 @@ import Profile from './screens/Profile';
 import UserOrders from './screens/UserOrders';
 import AddProduct from './screens/AddProduct';
 import AdminNavber from './components/AdminNavber';
+import EaditProduct from './screens/EaditProduct';
+import EaditProductDetails from './screens/EaditProductDetails';
+import AdminOrders from './screens/AdminOrders';
 
 function App() {
   return (
@@ -31,6 +34,9 @@ function App() {
         <Route path='/profile' element={<> <Navber /> <Profile /> <Footer /> </>} />
         <Route path='/orders' element={<> <Navber /> <UserOrders/> <Footer /> </>} />
         <Route path='/admin/addproduct' element={<> <Navber /> <AdminNavber/> <AddProduct/>  </>} />
+        <Route path='/admin/eaditproduct' element={<> <Navber /> <AdminNavber/> <EaditProduct/>  </>} />
+        <Route path='/admin/eaditproduct/1' element={<> <Navber /> <AdminNavber/> <EaditProductDetails/>  </>} />
+        <Route path='/admin/adminorders' element={<> <Navber /> <AdminNavber/> <AdminOrders/>  </>} />
       </Routes>
 
     </div>

@@ -12,7 +12,7 @@ const AdminNavber = () => {
                             <button className="inline-flex items-center mx-2 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Add new Product </button>
                         </Link>
 
-                        <Link to="/admin/eaditproudct">
+                        <Link to="/admin/eaditproduct">
                             <button className="inline-flex items-center mx-2 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Eadit Product details </button>
                         </Link>
 
