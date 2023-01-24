@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import googleLogo from '../assets/images/google.svg';
 import { Link } from 'react-router-dom';
-// import { useSignUpMutation } from '../reduxToolKit/services/userAPI';
+import { useSignUpMutation } from '../reduxToolKit/services/userAPI';
 
 const SignUp = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setpassword] = useState()
+    const [cpassword, setCpassword] = useState()
+    const navigate = useNavigate()
+
+    const [createUser, result] = useSignUpMutation()
+
+    const handleSignup = () => {
+        if(password !== cpassword){
+            return alert("password and conform password not match")
+        }
+
+        const res = createUser({name, email, password})
+
+        setName('')
+        setEmail('')
+        setpassword('')
+        setCpassword('')
+
+        if(result.isSuccess){
+            navigate('/login')
+        }
+        console.log('res : ', res);
+        console.log('result : ', result);
+    }
 
     return (
         <div className='flex items-center justify-center h-[100vh]'>
@@ -21,34 +48,42 @@ const SignUp = () => {
                     <p className="px-3 text-gray-600">OR</p>
                     <hr className="w-full text-gray-600" />
                 </div>
-                <form novalidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+                <form action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <label for="name" className="block text-sm">Name</label>
-                            <input type="text" name="name" id="name" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600" />
+                            <label forHtml="name" className="block text-sm">Name</label>
+                            <input type="text" name="name" id="name" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                                onChange={e => setName(e.target.value)}
+                            />
                         </div>
                         <div className="space-y-2">
-                            <label for="email" className="block text-sm">Email address</label>
-                            <input type="email" name="email" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600" />
-                        </div>
-                        <div className="space-y-2">
-                            <div className="flex justify-between">
-                                <label for="password" className="text-sm">Password</label>
-                                {/* <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a> */}
-                            </div>
-                            <input type="password" name="password" id="password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600" />
+                            <label forHtml="email" className="block text-sm">Email address</label>
+                            <input type="email" name="email" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
-                                <label for="password" className="text-sm">Conform Password</label>
+                                <label forHtml="password" className="text-sm">Password</label>
                                 {/* <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a> */}
                             </div>
-                            <input type="password" name="cpassword" id="password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600" />
+                            <input type="password" name="password" id="password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                                onChange={(e) => setpassword(e.target.value)}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <div className="flex justify-between">
+                                <label forHtml="password" className="text-sm">Conform Password</label>
+                                {/* <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a> */}
+                            </div>
+                            <input type="password" name="cpassword" id="password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                                onChange={(e) => setCpassword(e.target.value)}
+                            />
                         </div>
                     </div>
-                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50">Sign in</button>
+                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50" onClick={handleSignup} > Sign in </button>
                     <p className="text-sm text-center text-gray-600">Dont have account?
-                        <Link to="/signup" rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</Link>
+                        <Link to="/signup" rel="noopener noreferrer" className="focus:underline hover:underline"  >Sign up here</Link>
                     </p>
                 </form>
             </div>
