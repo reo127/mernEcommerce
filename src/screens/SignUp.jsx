@@ -1,8 +1,10 @@
 import React from 'react';
 import googleLogo from '../assets/images/google.svg';
 import { Link } from 'react-router-dom';
+// import { useSignUpMutation } from '../reduxToolKit/services/userAPI';
 
 const SignUp = () => {
+
     return (
         <div className='flex items-center justify-center h-[100vh]'>
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-50 text-gray-800">
