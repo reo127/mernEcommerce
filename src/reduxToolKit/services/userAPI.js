@@ -16,6 +16,17 @@ export const userAPI = createApi({
                 }
             }
         }),
+        signIn: builder.mutation({
+            query: (bodyData) => {
+                console.log(bodyData)
+                return{
+                    url: "auth/signin",
+                    method: "POST",
+                    body: bodyData,
+                    headers: { "Content-Type": "application/json" }
+                }
+            }
+        }),
         getAllProduct: builder.query({
             query: () => {
                 return{
@@ -28,4 +39,4 @@ export const userAPI = createApi({
     })
 })
 
-export const {useSignUpMutation, useGetAllProductQuery} = userAPI;
+export const {useSignUpMutation, useSignInMutation, useGetAllProductQuery} = userAPI;
