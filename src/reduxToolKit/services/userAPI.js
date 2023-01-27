@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const userAPI = createApi({
-    
+
     reducerPath: "userAPI",
-    baseQuery: fetchBaseQuery({baseUrl : 'https://lucky-pike-tux.cyclic.app/api/'}),
-    endpoints: (builder ) => ({
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
+    endpoints: (builder) => ({
         signUp: builder.mutation({
             query: (bodyData) => {
                 console.log(bodyData)
-                return{
+                return {
                     url: "auth/signup",
                     method: "POST",
                     body: bodyData,
@@ -19,7 +19,7 @@ export const userAPI = createApi({
         signIn: builder.mutation({
             query: (bodyData) => {
                 console.log(bodyData)
-                return{
+                return {
                     url: "auth/signin",
                     method: "POST",
                     body: bodyData,
@@ -29,14 +29,34 @@ export const userAPI = createApi({
         }),
         getAllProduct: builder.query({
             query: () => {
-                return{
+                return {
                     url: "products/getallproducts",
-                    method: "get"
+                    method: "get",
                 }
             }
-        })
-        
+        }),
+        getProfile: builder.query({
+            query: () => {
+                let headers = {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+
+                }
+
+                console.log(headers)
+                return {
+                    url: "auth/profile",
+                    method: "get",
+                    // headers: headers,
+                    credentials: 'include',
+
+                }
+            }
+        }),
+
     })
 })
 
-export const {useSignUpMutation, useSignInMutation, useGetAllProductQuery} = userAPI;
+export const { useSignUpMutation, useSignInMutation, useGetAllProductQuery, useGetProfileQuery } = userAPI;

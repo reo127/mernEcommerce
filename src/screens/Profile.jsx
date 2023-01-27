@@ -1,7 +1,10 @@
 import React from 'react';
 import profileImage from "../assets/images/user.png";
+import { useGetProfileQuery } from '../reduxToolKit/services/userAPI';
 
 const Profile = () => {
+    const {data, isSuccess} = useGetProfileQuery()
+    console.log(data);
     return (
         <div>
             <section className="p-6 bg-gray-100 text-gray-900 lg:h-[73vh] flex items-center">
