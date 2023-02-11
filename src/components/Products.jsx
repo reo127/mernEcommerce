@@ -13,7 +13,7 @@ const Products = () => {
 
                         {isSuccess && data.allProduct.map((product, i) => {
                             return (
-                                <Link to='/product' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out" >
+                                <Link to='/product' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out" key={i} >
                                     <div className="block relative h-48 rounded overflow-hidden" >
                                         <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={product.photos[0].secure_url} />
                                     </div>

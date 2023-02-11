@@ -23,7 +23,8 @@ export const userAPI = createApi({
                     url: "auth/signin",
                     method: "POST",
                     body: bodyData,
-                    headers: { "Content-Type": "application/json" }
+                    headers: { "Content-Type": "application/json" },
+                    credentials: "include"
                 }
             }
         }),
@@ -37,21 +38,11 @@ export const userAPI = createApi({
         }),
         getProfile: builder.query({
             query: () => {
-                let headers = {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-
-                }
-
-                console.log(headers)
                 return {
                     url: "auth/profile",
                     method: "get",
-                    // headers: headers,
+                    headers: { "Content-Type": "application/json" },
                     credentials: 'include',
-
                 }
             }
         }),
