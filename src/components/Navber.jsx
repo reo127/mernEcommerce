@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import cartLogo from '../assets/images/cart.svg'
+import { useGetProfileQuery } from '../reduxToolKit/services/userAPI';
 
 const Navber = () => {
+    const { data } = useGetProfileQuery()
+    console.log(data);
 
     return (
         <>
@@ -32,12 +35,15 @@ const Navber = () => {
                         </fieldset>
                     </nav>
                     <div className="flex items-center">
-                        <Link to='/cart' className=" mr-4 ">
-                        <p className='absolute bg-[#FF9F00] rounded-full w-5 h-4 font-bold text-sm pb-5 text-center'> 3 </p>
-                            <img src={cartLogo} alt="cart" className='max-w-[80%] ' />
-                        </Link>
-                        <Link to='/signup'><button className=" inline-flex items-center bg-gray-100 border-0 font-semibold py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Register </button></Link>
-                        <Link to='/login'><button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button></Link>
+                        {
+                            !(data?.success) ? <><Link to='/cart' className=" mr-4 ">
+                                <p className='absolute bg-[#FF9F00] rounded-full w-5 h-4 font-bold text-sm pb-5 text-center'> 3 </p>
+                                <img src={cartLogo} alt="cart" className='max-w-[80%] ' />
+                            </Link>
+                                <Link to='/signup'><button className=" inline-flex items-center bg-gray-100 border-0 font-semibold py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Register </button></Link>
+                                <Link to='/login'><button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button></Link></> :
+                                <button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Logout </button>
+                        }
                     </div>
                 </div>
             </header>
