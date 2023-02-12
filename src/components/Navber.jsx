@@ -1,11 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import cartLogo from '../assets/images/cart.svg'
-import { useGetProfileQuery } from '../reduxToolKit/services/userAPI';
+import { useGetProfileQuery, useLogoutMutation } from '../reduxToolKit/services/userAPI';
 
 const Navber = () => {
-    const { data } = useGetProfileQuery()
-    console.log(data);
+    const { data } = useGetProfileQuery();
+    const [logout] = useLogoutMutation();
+    const token = document.cookie.split('=')
+    console.log(token[0]);
+
+
+    const handleLogout = () => {
+        logout()
+        document.location.reload()
+    }
 
     return (
         <>
@@ -36,13 +44,16 @@ const Navber = () => {
                     </nav>
                     <div className="flex items-center">
                         {
-                            !(data?.success) ? <><Link to='/cart' className=" mr-4 ">
+                            !(data?.success) ? <>
+                                <Link to='/signup'><button className=" inline-flex items-center bg-gray-100 border-0 font-semibold py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Register </button></Link>
+                                <Link to='/login'><button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button></Link></> :
+                                <>
+                                <Link to='/cart' className=" mr-4 ">
                                 <p className='absolute bg-[#FF9F00] rounded-full w-5 h-4 font-bold text-sm pb-5 text-center'> 3 </p>
                                 <img src={cartLogo} alt="cart" className='max-w-[80%] ' />
                             </Link>
-                                <Link to='/signup'><button className=" inline-flex items-center bg-gray-100 border-0 font-semibold py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Register </button></Link>
-                                <Link to='/login'><button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button></Link></> :
-                                <button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Logout </button>
+                                <button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" onClick={handleLogout}> Logout </button>
+                                </>
                         }
                     </div>
                 </div>

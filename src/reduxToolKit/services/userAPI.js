@@ -28,6 +28,16 @@ export const userAPI = createApi({
                 }
             }
         }),
+        logout : builder.mutation({
+            query: () => {
+                return {
+                    url: "auth/logout",
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: "include"
+                }
+            }
+        }),
         getAllProduct: builder.query({
             query: () => {
                 return {
@@ -50,4 +60,4 @@ export const userAPI = createApi({
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useGetAllProductQuery, useGetProfileQuery } = userAPI;
+export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useGetAllProductQuery, useGetProfileQuery } = userAPI;
