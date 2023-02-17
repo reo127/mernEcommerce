@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useGetProfileQuery } from '../reduxToolKit/services/userAPI';
 
 const Cart = () => {
+    const { data } = useGetProfileQuery()
+    console.log(data?.user.cart);
 
     return (
         <>
@@ -132,21 +135,7 @@ const Cart = () => {
             </div>
 
             <style>
-                {` /* width */
-        #scroll::-webkit-scrollbar {
-            width: 1px;
-        }
-
-        /* Track */
-        #scroll::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        /* Handle */
-        #scroll::-webkit-scrollbar-thumb {
-            background: rgb(133, 132, 132);
-        }
-`}
+               
             </style>
         </>
     )
