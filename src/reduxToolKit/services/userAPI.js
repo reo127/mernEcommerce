@@ -5,6 +5,7 @@ export const userAPI = createApi({
     reducerPath: "userAPI",
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
     endpoints: (builder) => ({
+
         signUp: builder.mutation({
             query: (bodyData) => {
                 console.log(bodyData)
@@ -28,7 +29,7 @@ export const userAPI = createApi({
                 }
             }
         }),
-        logout : builder.mutation({
+        logout: builder.mutation({
             query: () => {
                 return {
                     url: "auth/logout",
@@ -38,10 +39,28 @@ export const userAPI = createApi({
                 }
             }
         }),
+        getProduct: builder.query({
+            query: (productId) => {
+                console.log(productId);
+                return {
+                    url: `product/${productId}`,
+                    method: "get",
+                }
+            }
+        }),
         getAllProduct: builder.query({
             query: () => {
                 return {
                     url: "products/getallproducts",
+                    method: "get",
+                }
+            }
+        }),
+        getProductByCatagory: builder.query({
+            query: (catagoryName) => {
+                console.log(catagoryName);
+                return {
+                    url: `products/${catagoryName}`,
                     method: "get",
                 }
             }
@@ -60,4 +79,4 @@ export const userAPI = createApi({
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useGetAllProductQuery, useGetProfileQuery } = userAPI;
+export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery } = userAPI;
