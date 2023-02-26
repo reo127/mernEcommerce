@@ -22,7 +22,7 @@ const CatagoryList = () => {
 
                         {isSuccess && data.catagoryProduct.map((product, i) => {
                             return (
-                                <Link to='/product' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out" key={i} >
+                                <Link to={`/product/${product._id}`} className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out" key={i} >
                                     <div className="block relative h-48 rounded overflow-hidden" >
                                     <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={`http://localhost:8000/${product?.photos[0].path}`} />
                                     </div>
