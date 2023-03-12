@@ -39,6 +39,22 @@ export const userAPI = createApi({
                 }
             }
         }),
+        addProduct: builder.mutation({
+            query: (formData) => {
+                // console.log(Array.from(formData));
+                // console.log(formData);
+                return {
+                    url: "admin/addproduct",
+                    method: "POST",
+                    body: formData,
+                    // headers: { "Content-Type": "application/json"},
+                    // headers: { "Content-Type": 'multipart/form-data; boundary=----WebKitFormBoundaryLfa65tIqD1Ya5NFF'},
+                    // headers: { 'content-type': 'multipart/form-data; boundary=--------------------------497755607558509593530804'},
+                    credentials: "include",
+                    redirect: 'follow'
+                }
+            }
+        }),
         getProduct: builder.query({
             query: (productId) => {
                 console.log(productId);
@@ -79,4 +95,4 @@ export const userAPI = createApi({
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery } = userAPI;
+export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery } = userAPI;

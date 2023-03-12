@@ -1,35 +1,49 @@
 import React, { useState } from 'react'
+import { useAddProductMutation } from '../reduxToolKit/services/userAPI'
 
 const AddProduct = () => {
     const [productName, setProductName] = useState('')
-    const [price, setPrice] = useState('')
+    const [price, setPrice] = useState(12000)
     const [description, setDescription] = useState('')
-    const [photos, setPhotos] = useState("")
-    const [stock, setStock] = useState("")
+    const [photos, setPhotos] = useState([])
+    const [stock, setStock] = useState()
     const [catagory, setCatagory] = useState("")
 
-    const handleUpload = () => {
-        const formData = new FormData();
+    const [addProduct, result] = useAddProductMutation()
 
-        formData.append("productName", productName)
+    const handleUpload = () => {
+
+        // let images = [];
+        // for (let i = 0; i < images.length; i++) {
+        //     images.push(photos)
+        // }
+
+        const formData = new FormData(); 
+
+        formData.append("name", productName)
         formData.append("price", price)
         formData.append("description", description)
-        formData.append("photos", photos)
+        formData.append("photos", photos[0])
+        formData.append("photos", photos[1])
         formData.append("stock", stock)
         formData.append("catagory", catagory)
-        console.log(Array.from(formData));
 
-        // console.log(productName);
-        // console.log(price);
-        // console.log(description);
-        // console.log(photos);
-        // console.log(stock);
-        // console.log(catagory);
+
+
+        addProduct(formData)
+        console.log('result : ', result);
+        console.log(productName);
+        console.log(price);
+        console.log(description);
+        console.log(photos[0], "Photos is hare");
+        console.log(stock);
+        console.log(catagory);
+
     }
     return (
         <div >
             <div className="flex flex-col max-w-md p-6 rounded-md  bg-gray-50 text-gray-800 mx-auto mt-4">
-                <form action="" className="space-y-12 ng-untouched ng-pristine ng-valid">
+                <form action="" className="space-y-12 ng-untouched ng-pristine ng-valid" encType="multipart/form-data">
                     <div className="space-y-2">
                         <div className='flex'><div >
                             <label htmlFor="text" className="block mb-2 text-sm">Product Name</label>
@@ -55,9 +69,8 @@ const AddProduct = () => {
                         <div>
                             <label htmlFor="text" className="block mb-2 text-sm">Photos</label>
                             <div className="flex">
-                                <input type="file" multiple accept='image/*' name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+                                <input type="file" multiple accept='image/*' name="files" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
                                     onChange={e => setPhotos(e.target.files)}
-                                // value={productName}
                                 />
                             </div>
                         </div>
