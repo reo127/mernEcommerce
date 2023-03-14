@@ -23,8 +23,9 @@ const AddProduct = () => {
         formData.append("name", productName)
         formData.append("price", price)
         formData.append("description", description)
-        formData.append("photos", photos[0])
-        formData.append("photos", photos[1])
+        for (let i = 0; i < photos.length; i++) {            
+            formData.append("photos", photos[i])
+        }
         formData.append("stock", stock)
         formData.append("catagory", catagory)
 
