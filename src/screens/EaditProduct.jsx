@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetAllProductQuery, useDeleteProductMutation } from '../reduxToolKit/services/userAPI';
+import { useGetAllProductQuery, useDeleteProductMutation, useEaditProductMutation } from '../reduxToolKit/services/userAPI';
 
 const EaditProduct = () => {
     const [modal, setModal] = useState(false);
@@ -7,54 +7,13 @@ const EaditProduct = () => {
 
     const { data, isSuccess } = useGetAllProductQuery();
     const [deleteProduct] = useDeleteProductMutation();
-    // console.log(isSuccess && data.allProduct);
 
 
     return (
         <div className='transition-all ease-in-out'>
 
-            {/* {modal && <div className="fixed right-0 z-10 sm:right-[32vw] flex flex-col items-center max-w-lg gap-4 p-6 rounded-md shadow-2xl sm:py-8 sm:px-12 bg-gray-50 text-gray-800">
-                <button className="absolute top-2 right-2" onClick={() => setModal(false)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-6 h-6">
-                        <polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
-                    </svg>
-                </button>
-                <form action="" className="space-y-12 ng-untouched ng-pristine ng-valid " encType="multipart/form-data">
-                    <div className="space-y-2">
-                        <div className='flex'><div >
-                            <label htmlFor="text" className="block mb-2 text-sm">Product Name</label>
-                            <input type="text" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800" />
-                        </div>
-                            <div className='ml-2'>
-                                <label htmlFor="text" className="block mb-2 text-sm">Price</label>
-                                <input type="number" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                />
-                            </div></div>
-                        <div>
-                            <label htmlFor="text" className="block mb-2 text-sm">Description</label>
-                            <textarea type="text" name="text" id="email" className="w-full px-3 py-2 border resize-y rounded-md border-gray-300 bg-gray-50 text-gray-800" />
-                        </div>
-                        <div className="flex">
-                            <div>
-                                <label htmlFor="text" className="block mb-2 text-sm">Stock</label>
-                                <input type="number" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                />
-                            </div>
-                            <div className='ml-2'>
-                                <label htmlFor="text" className="block mb-2 text-sm">Catagory</label>
-                                <input type="text" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <div>
-                            <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50" >Update product</button>
-                        </div>
-                    </div>
-                </form>
-            </div>} */}
-            { modal && <EaditModal setModal={setModal} prod={prod} setProd={setProd}  /> }
+
+            {modal && <EaditModal setModal={setModal} prod={prod} setProd={setProd} />}
             <div className="">
                 <fieldset className="w-full space-y-1 text-gray-800 flex justify-center">
                     <label htmlFor="Search" className="hidden">Search</label>
@@ -90,8 +49,9 @@ const EaditProduct = () => {
                                                 >DELETE</button>
 
                                                 <button type="button" className="px-5 py-1 font-semibold rounded-xl mt-2 bg-yellow-400 text-gray-100"
-                                                    onClick={() => {setModal(true)
-                                                    setProd({_id : product._id,name: product.name, price: product.price, description : product.description, stock: product.stock, catagory: product.catagory})
+                                                    onClick={() => {
+                                                        setModal(true)
+                                                        setProd({ _id: product._id, name: product.name, price: product.price, description: product.description, stock: product.stock, catagory: product.catagory })
                                                     }}
                                                 >EADIT</button>
                                             </div>
@@ -126,9 +86,23 @@ const EaditProduct = () => {
 }
 
 
-const EaditModal = ({setModal, prod, setProd}) => {
+const EaditModal = ({ setModal, prod, setProd }) => {
+    const [eaditProduct] = useEaditProductMutation()
+    const [name, setName] = useState(prod.name)
+    const [price, setPrice] = useState(prod.price)
+    const [description, setDescription] = useState(prod.description)
+    const [stock, setStock] = useState(prod.stock)
+    const [catagory, setcatagory] = useState(prod.catagory)
+    const [proudctId] = useState(prod._id)
+
+    const handleUpdate = () => {
+        console.log(name, price, description, stock, catagory, proudctId);
+        eaditProduct({proudctId, name, price, description, stock, catagory})
+        setModal(false)
+    }
     return (
         <div className="fixed right-0 z-10 sm:right-[32vw] flex flex-col items-center max-w-lg gap-4 p-6 rounded-md shadow-2xl sm:py-8 sm:px-12 bg-gray-50 text-gray-800">
+            <p><b>{prod._id}</b></p>
             <button className="absolute top-2 right-2" onClick={() => setModal(false)} >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-6 h-6">
                     <polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
@@ -138,38 +112,38 @@ const EaditModal = ({setModal, prod, setProd}) => {
                 <div className="space-y-2">
                     <div className='flex'><div >
                         <label htmlFor="text" className="block mb-2 text-sm">Product Name</label>
-                        <input type="text" name="text" id="email" placeholder={prod.name} className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800" 
-                        value={prod.name}
-                        onChange={(e) => setProd(prod.name = e.target.value)}
-                         />
+                        <input type="text" name="text" id="email" placeholder={prod.name} className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
                     </div>
                         <div className='ml-2'>
                             <label htmlFor="text" className="block mb-2 text-sm">Price</label>
                             <input type="number" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                            value={prod.price}
-                        onChange={(e) => setProd(prod.price = e.target.value)}
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
                             />
                         </div></div>
                     <div>
                         <label htmlFor="text" className="block mb-2 text-sm">Description</label>
-                        <textarea type="text" name="text" id="email" className="w-full px-3 py-2 border resize-y rounded-md border-gray-300 bg-gray-50 text-gray-800" 
-                            value={prod.description}
-                        onChange={(e) => setProd(prod.description = e.target.value)}
+                        <textarea type="text" name="text" id="email" className="w-full px-3 py-2 border resize-y rounded-md border-gray-300 bg-gray-50 text-gray-800"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
                     <div className="flex">
                         <div>
                             <label htmlFor="text" className="block mb-2 text-sm">Stock</label>
                             <input type="number" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                 value={prod.stock}
-                        onChange={(e) => setProd(prod.stock = e.target.value)}
+                                value={stock}
+                                onChange={(e) => setStock(e.target.value)}
                             />
                         </div>
                         <div className='ml-2'>
                             <label htmlFor="text" className="block mb-2 text-sm">Catagory</label>
                             <input type="text" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                 value={prod.catagory}
-                        onChange={(e) => setProd(prod.catagory = e.target.value)}
+                                value={catagory}
+                                onChange={(e) => setcatagory(e.target.value)}
                             />
                         </div>
                     </div>
@@ -177,7 +151,7 @@ const EaditModal = ({setModal, prod, setProd}) => {
                 </div>
                 <div className="space-y-2">
                     <div>
-                        <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50" >Update product</button>
+                        <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50" onClick={() => handleUpdate()} >Update product</button>
                     </div>
                 </div>
             </form>

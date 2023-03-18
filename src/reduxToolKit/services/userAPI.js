@@ -50,6 +50,16 @@ export const userAPI = createApi({
                 }
             }
         }),
+        eaditProduct: builder.mutation({
+            query: (body) => {
+                return {
+                    url: "admin/updateProduct",
+                    method: "PUT",
+                    credentials: "include",
+                    body: body
+                }
+            }
+        }),
         deleteProduct: builder.mutation({
             query: (productId) => {
                 return {
@@ -98,4 +108,4 @@ export const userAPI = createApi({
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation } = userAPI;
+export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation, useEaditProductMutation } = userAPI;
