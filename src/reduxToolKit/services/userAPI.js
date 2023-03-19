@@ -104,8 +104,17 @@ export const userAPI = createApi({
                 }
             }
         }),
-
+        updateProfile: builder.mutation({
+            query: (body) => {
+                return {
+                    url: "auth/updateprofile",
+                    method: "PUT",
+                    credentials: "include",
+                    body: body
+                }
+            }
+        }),
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation, useEaditProductMutation } = userAPI;
+export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation, useEaditProductMutation, useUpdateProfileMutation } = userAPI;
