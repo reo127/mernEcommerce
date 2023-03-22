@@ -31,7 +31,7 @@ console.log(data);
                             <div className="flex mt-12">
                                 <span className="mr-4 title-font font-medium text-2xl text-gray-900">₹{data?.product.price}</span>
                                 <div className='flex items-center justify-center'>
-                                    <Link to='/checkout'><button className="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold">BUY</button></Link>
+                                    <Link to={`/checkout/${productId}`}><button className="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold">BUY</button></Link>
                                     <button className="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold">ADD TO CART</button>
 
                                 </div>

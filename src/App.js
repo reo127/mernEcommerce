@@ -28,7 +28,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/product/:productId' element={<> <Navber /> <Product /> </>} />
         <Route path='/catagorylist/:catagory' element={<> <Navber /> <CatagoryList /> <Footer /> </>} />
-        <Route path='/checkout' element={<> <Navber /> <CheckOut/> <Footer /> </>} />
+        <Route path='/checkout/:productId' element={<> <Navber /> <CheckOut/> <Footer /> </>} />
         <Route path='/search' element={<> <Navber /> <Search/> <Footer /> </>} />
         <Route path='/cart' element={<> <Navber /> <Cart/> <Footer /> </>} />
         <Route path='/profile' element={<> <Navber /> <Profile /> <Footer /> </>} />

@@ -114,7 +114,17 @@ export const userAPI = createApi({
                 }
             }
         }),
+        orderd: builder.mutation({
+            query: (body) => {
+                return {
+                    url: "orders/orderproduct",
+                    method: "POST",
+                    credentials: "include",
+                    body: body
+                }
+            }
+        }),
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation, useEaditProductMutation, useUpdateProfileMutation } = userAPI;
+export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation, useEaditProductMutation, useUpdateProfileMutation, useOrderdMutation } = userAPI;
