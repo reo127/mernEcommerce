@@ -99,7 +99,7 @@ const Search = () => {
                     </section>
                     <ol className="flex justify-center gap-1 mt-8 text-xs font-medium">
                         <li>
-                            <a
+                            <Link
                                 href="#"
                                 className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded"
                             >
@@ -117,16 +117,16 @@ const Search = () => {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
-                            <a
+                            <Link
                                 href="#"
                                 className="block w-8 h-8 leading-8 text-center border border-gray-100 rounded"
                             >
                                 1
-                            </a>
+                            </Link>
                         </li>
 
                         <li
@@ -136,25 +136,25 @@ const Search = () => {
                         </li>
 
                         <li>
-                            <a
+                            <Link
                                 href="#"
                                 className="block w-8 h-8 leading-8 text-center border border-gray-100 rounded"
                             >
                                 3
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
-                            <a
+                            <Link
                                 href="#"
                                 className="block w-8 h-8 leading-8 text-center border border-gray-100 rounded"
                             >
                                 4
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
-                            <a
+                            <Link
                                 href="#"
                                 className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded"
                             >
@@ -172,7 +172,7 @@ const Search = () => {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                            </a>
+                            </Link>
                         </li>
                     </ol>
                 </div>
