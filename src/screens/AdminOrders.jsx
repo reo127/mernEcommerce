@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useGetOrdersQuery } from '../reduxToolKit/services/userAPI';
 
 const AdminOrders = () => {
+    const { data} = useGetOrdersQuery()
+    console.log(data);
     return (
         <div>
             <div>
                 <div className="">
                     <fieldset className="w-full space-y-1 text-gray-800 flex justify-center">
-                        <label for="Search" className="hidden">Search</label>
+                        <label htmlFor="Search" className="hidden">Search</label>
                         <div className="relative">
                             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                                 <button type="button" title="search" className="p-1 focus:outline-none focus:ring">
@@ -21,114 +23,26 @@ const AdminOrders = () => {
                     </fieldset>
 
                     <section className="text-gray-600 body-font">
-                        <div className="container px-5 lg:px-16 py-24 lg:py-16 mx-auto ">
-                            <div className="flex flex-wrap -m-4 ease-in-out">
-                                <Link to='/product' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">Rohan Malo</p>
-                                        <p className="mt-1">$16.00</p>
-                                        <p className="mt-1">+91 6289038527</p>
-                                        <p className="mt-1"> 54rohanmalo@gmail.com </p>
-                                        <p className="mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam adipisci blanditiis eaque necessitatibus sint labore officiis at laboriosam ullam possimus!</p>
-                                        <span className="rounded bg-red-400 py-1 px-3 text-xs font-bold uppercase">order</span>
-                                        <p className="mt-1"> 10jan - 12 jan </p>
-                                    </div>
-                                </Link>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
-                                <a href='/' className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out">
-                                    <div className="block relative h-48 rounded overflow-hidden" >
-                                        <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                        <h2 className="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                        <p className="mt-1">$16.00</p>
-                                    </div>
-                                </a>
+                        <div className="container px-5 lg:px-16 py-24 lg:py-16 mx-auto  ">
+                            <div className="flex flex-wrap -m-4 ease-in-out cursor-pointer ">
+
+                                {data ? data.orders.map((orders, i) => {
+                                    return (
+                                        <div className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out rounded-lg" key={i}>
+                                            <div className="mt-4">
+                                                <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1"> {orders.catagory}</h3>
+                                                <h2 className="text-gray-900 title-font text-lg font-medium"> {orders.productName} </h2>
+                                                <p className="mt-1"> {orders.userName}</p>
+                                                <p className="mt-1">{orders.amount}</p>
+                                                <p className="mt-1">+91 {orders.phoneNumber}</p>
+                                                <p className="mt-1"> 54rohanmalo@gmail.com </p>
+                                                <p className="mt-1">{orders.address} - {orders.state} - {orders.zip}</p>
+                                                <span className="rounded bg-red-400 py-1 px-3 text-xs font-bold uppercase">{orders.status}</span>
+                                                <p className="mt-1"> {orders.createdAt} </p>
+                                            </div>
+                                        </div>
+                                    )
+                                }) : "no data"}
 
                             </div>
                         </div>

@@ -124,7 +124,31 @@ export const userAPI = createApi({
                 }
             }
         }),
+        getOrders: builder.query({
+            query: () => {
+                return {
+                    url: "orders/allorders",
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: 'include',
+                }
+            }
+        }),
     })
 })
 
-export const { useSignUpMutation, useSignInMutation, useLogoutMutation, useAddProductMutation, useGetAllProductQuery, useGetProfileQuery, useGetProductByCatagoryQuery, useGetProductQuery, useDeleteProductMutation, useEaditProductMutation, useUpdateProfileMutation, useOrderdMutation } = userAPI;
+export const { 
+     useSignUpMutation,
+     useSignInMutation,
+     useLogoutMutation,
+     useAddProductMutation,
+     useGetAllProductQuery,
+     useGetProfileQuery,
+     useGetProductByCatagoryQuery,
+     useGetProductQuery,
+     useDeleteProductMutation,
+     useEaditProductMutation,
+     useUpdateProfileMutation,
+     useOrderdMutation,
+     useGetOrdersQuery
+     } = userAPI;
