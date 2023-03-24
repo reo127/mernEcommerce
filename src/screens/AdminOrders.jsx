@@ -1,13 +1,16 @@
-import React from 'react';
-import { useGetOrdersQuery } from '../reduxToolKit/services/userAPI';
+import React, { useState } from 'react';
+import { useGetOrdersQuery, useUpdateOrderMutation } from '../reduxToolKit/services/userAPI';
 
 const AdminOrders = () => {
-    const { data} = useGetOrdersQuery()
+    const [modal, setModal] = useState(false);
+    const [orderId, setOrderId] = useState("")
+    const { data } = useGetOrdersQuery()
     console.log(data);
     return (
         <div>
             <div>
                 <div className="">
+                    {modal && <EaditModal setModal={setModal} orderId={orderId} />}
                     <fieldset className="w-full space-y-1 text-gray-800 flex justify-center">
                         <label htmlFor="Search" className="hidden">Search</label>
                         <div className="relative">
@@ -27,6 +30,7 @@ const AdminOrders = () => {
                             <div className="flex flex-wrap -m-4 ease-in-out cursor-pointer ">
 
                                 {data ? data.orders.map((orders, i) => {
+                                    
                                     return (
                                         <div className="lg:w-1/4 sm:w-1/2 p-4 w-full hover:shadow-customShadow ease-in-out rounded-lg" key={i}>
                                             <div className="mt-4">
@@ -40,6 +44,16 @@ const AdminOrders = () => {
                                                 <span className="rounded bg-red-400 py-1 px-3 text-xs font-bold uppercase">{orders.status}</span>
                                                 <p className="mt-1"> {orders.createdAt} </p>
                                             </div>
+                                            <button type="button" className="px-5 py-1 font-semibold rounded-xl mt-2 bg-red-600 text-gray-100 mr-3"
+                                                onClick={() => { console.log("Delete Order") }}
+                                            >DELETE</button>
+
+                                            <button type="button" className="px-5 py-1 font-semibold rounded-xl mt-2 bg-yellow-400 text-gray-100"
+                                                onClick={() => {
+                                                    setOrderId(orders._id)
+                                                    setModal(true)
+                                                }}
+                                            >EADIT</button>
                                         </div>
                                     )
                                 }) : "no data"}
@@ -66,6 +80,51 @@ const AdminOrders = () => {
                     </button>
                 </div>
             </div>
+        </div>
+    )
+}
+
+
+const EaditModal = ({ setModal, orderId }) => {
+    const [updateOrder] = useUpdateOrderMutation();
+    const [status, setStatus] = useState("ORDERED")
+
+    const handleUpdate = () => {
+        updateOrder({status, orderId})
+        setModal(false)
+    }
+    return (
+        <div className="fixed right-0 z-10 sm:right-[32vw] flex flex-col items-center max-w-lg gap-4 p-6 rounded-md shadow-2xl sm:py-8 sm:px-12 bg-gray-50 text-gray-800">
+            <p><b>{orderId}</b></p>
+            <button className="absolute top-2 right-2" onClick={() => setModal(false)} >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="flex-shrink-0 w-6 h-6">
+                    <polygon points="427.314 107.313 404.686 84.687 256 233.373 107.314 84.687 84.686 107.313 233.373 256 84.686 404.687 107.314 427.313 256 278.627 404.686 427.313 427.314 404.687 278.627 256 427.314 107.313"></polygon>
+                </svg>
+            </button>
+            <form action="" className="space-y-12 ng-untouched ng-pristine ng-valid " encType="multipart/form-data">
+                <div className="space-y-2">
+                    <div className="flex">
+                        <div>
+                        </div>
+                        <div className='ml-2'>
+                            <select className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 "
+                            value={status}
+                            onChange={e => setStatus(e.target.value)}
+                            >
+                                <option selected value="ORDERED">ORDERED</option>
+                                <option value="SHIPPED" >SHIPPED</option>
+                                <option value="DELIVERED" >DELIVERED</option>
+                                <option value="CANCELLED" >CANCELLED</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="space-y-2">
+                    <div>
+                        <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-blue-600 text-gray-50" onClick={() => handleUpdate()} >Update product</button>
+                    </div>
+                </div>
+            </form>
         </div>
     )
 }

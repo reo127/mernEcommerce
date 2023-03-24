@@ -134,6 +134,15 @@ export const userAPI = createApi({
                 }
             }
         }),
+        updateOrder: builder.mutation({
+            query: ({status, orderId}) => {
+                return {
+                    url: `orders/updateorder/${status}/${orderId}`,
+                    method: "PUT",
+                    credentials: "include",
+                }
+            }
+        }),
     })
 })
 
@@ -150,5 +159,6 @@ export const {
      useEaditProductMutation,
      useUpdateProfileMutation,
      useOrderdMutation,
-     useGetOrdersQuery
+     useGetOrdersQuery,
+     useUpdateOrderMutation
      } = userAPI;
