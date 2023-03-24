@@ -152,6 +152,15 @@ export const userAPI = createApi({
                 }
             }
         }),
+        addToCart: builder.mutation({
+            query: (productId) => {
+                return {
+                    url: `cart/${productId}/`,
+                    method: "POST",
+                    credentials: "include",
+                }
+            }
+        }),
     })
 })
 
@@ -170,5 +179,6 @@ export const {
      useOrderdMutation,
      useGetOrdersQuery,
      useUpdateOrderMutation,
-     useDeleteOrderMutation
+     useDeleteOrderMutation,
+     useAddToCartMutation
      } = userAPI;
