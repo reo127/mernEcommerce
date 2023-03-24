@@ -143,6 +143,15 @@ export const userAPI = createApi({
                 }
             }
         }),
+        deleteOrder: builder.mutation({
+            query: (orderId) => {
+                return {
+                    url: `orders/deleteorder/${orderId}`,
+                    method: "DELETE",
+                    credentials: "include",
+                }
+            }
+        }),
     })
 })
 
@@ -160,5 +169,6 @@ export const {
      useUpdateProfileMutation,
      useOrderdMutation,
      useGetOrdersQuery,
-     useUpdateOrderMutation
+     useUpdateOrderMutation,
+     useDeleteOrderMutation
      } = userAPI;

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useGetOrdersQuery, useUpdateOrderMutation } from '../reduxToolKit/services/userAPI';
+import { useGetOrdersQuery, useUpdateOrderMutation, useDeleteOrderMutation } from '../reduxToolKit/services/userAPI';
 
 const AdminOrders = () => {
+    const [deleteOrder] = useDeleteOrderMutation();
     const [modal, setModal] = useState(false);
     const [orderId, setOrderId] = useState("")
     const { data } = useGetOrdersQuery()
@@ -45,7 +46,7 @@ const AdminOrders = () => {
                                                 <p className="mt-1"> {orders.createdAt} </p>
                                             </div>
                                             <button type="button" className="px-5 py-1 font-semibold rounded-xl mt-2 bg-red-600 text-gray-100 mr-3"
-                                                onClick={() => { console.log("Delete Order") }}
+                                                onClick={() => { deleteOrder(orders._id) }}
                                             >DELETE</button>
 
                                             <button type="button" className="px-5 py-1 font-semibold rounded-xl mt-2 bg-yellow-400 text-gray-100"
