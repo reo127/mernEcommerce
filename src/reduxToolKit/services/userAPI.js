@@ -161,6 +161,15 @@ export const userAPI = createApi({
                 }
             }
         }),
+        deleteCart: builder.mutation({
+            query: (productId) => {
+                return {
+                    url: `cart/removefromcart/${productId}`,
+                    method: "DELETE",
+                    credentials: "include",
+                }
+            }
+        }),
     })
 })
 
