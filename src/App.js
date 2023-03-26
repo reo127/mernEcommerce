@@ -29,7 +29,7 @@ function App() {
         <Route path='/product/:productId' element={<> <Navber /> <Product /> </>} />
         <Route path='/catagorylist/:catagory' element={<> <Navber /> <CatagoryList /> <Footer /> </>} />
         <Route path='/checkout/:productId' element={<> <Navber /> <CheckOut/> <Footer /> </>} />
-        <Route path='/search' element={<> <Navber /> <Search/> <Footer /> </>} />
+        <Route path='/search/:productName' element={<> <Navber /> <Search/> <Footer /> </>} />
         <Route path='/cart' element={<> <Navber /> <Cart/> <Footer /> </>} />
         <Route path='/profile' element={<> <Navber /> <Profile /> <Footer /> </>} />
         <Route path='/orders' element={<> <Navber /> <UserOrders/> <Footer /> </>} />

@@ -94,6 +94,14 @@ export const userAPI = createApi({
                 }
             }
         }),
+        searchProducts: builder.query({
+            query: (productName) => {
+                return {
+                    url: `products/search/${productName}`,
+                    method: "get",
+                }
+            }
+        }),
         getProfile: builder.query({
             query: () => {
                 return {
@@ -135,7 +143,7 @@ export const userAPI = createApi({
             }
         }),
         updateOrder: builder.mutation({
-            query: ({status, orderId}) => {
+            query: ({ status, orderId }) => {
                 return {
                     url: `orders/updateorder/${status}/${orderId}`,
                     method: "PUT",
@@ -173,22 +181,23 @@ export const userAPI = createApi({
     })
 })
 
-export const { 
-     useSignUpMutation,
-     useSignInMutation,
-     useLogoutMutation,
-     useAddProductMutation,
-     useGetAllProductQuery,
-     useGetProfileQuery,
-     useGetProductByCatagoryQuery,
-     useGetProductQuery,
-     useDeleteProductMutation,
-     useEaditProductMutation,
-     useUpdateProfileMutation,
-     useOrderdMutation,
-     useGetOrdersQuery,
-     useUpdateOrderMutation,
-     useDeleteOrderMutation,
-     useAddToCartMutation,
-     useDeleteCartMutation
-     } = userAPI;
+export const {
+    useSignUpMutation,
+    useSignInMutation,
+    useLogoutMutation,
+    useAddProductMutation,
+    useGetAllProductQuery,
+    useGetProfileQuery,
+    useGetProductByCatagoryQuery,
+    useGetProductQuery,
+    useDeleteProductMutation,
+    useEaditProductMutation,
+    useUpdateProfileMutation,
+    useOrderdMutation,
+    useGetOrdersQuery,
+    useUpdateOrderMutation,
+    useDeleteOrderMutation,
+    useAddToCartMutation,
+    useDeleteCartMutation,
+    useSearchProductsQuery
+} = userAPI;
