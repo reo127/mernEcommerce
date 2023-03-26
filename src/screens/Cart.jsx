@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useGetProfileQuery } from '../reduxToolKit/services/userAPI';
+import { useGetProfileQuery, useDeleteCartMutation } from '../reduxToolKit/services/userAPI';
 
 const Cart = () => {
     // TODO:Itrate all cart in the cart page
     // TODO:Delete cart api Created But need to intrigrate
+    const [deleteCart] = useDeleteCartMutation();
     const { data } = useGetProfileQuery()
     console.log(data?.user.cart);
 
@@ -40,7 +41,9 @@ const Cart = () => {
                                             <p className="w-96 text-xs leading-3 text-gray-600 mt-4">Only {cart.stock} left</p>
                                             <div className="flex items-center justify-between pt-5 pr-6">
                                                 <div className="flex itemms-center">
-                                                    <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                                                    <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                                                    onClick={() => deleteCart(cart._id)}
+                                                    >Remove</p>
                                                 </div>
                                                 <p className="text-base font-black leading-none text-gray-800"> ₹{cart.price} </p>
                                             </div>

@@ -189,5 +189,6 @@ export const {
      useGetOrdersQuery,
      useUpdateOrderMutation,
      useDeleteOrderMutation,
-     useAddToCartMutation
+     useAddToCartMutation,
+     useDeleteCartMutation
      } = userAPI;
