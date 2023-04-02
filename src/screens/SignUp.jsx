@@ -17,6 +17,7 @@ const SignUp = () => {
         if(password !== cpassword){
             return alert("password and conform password not match")
         }
+        console.log(name, email, password, cpassword)
 
         const res = createUser({name, email, password})
 
@@ -51,20 +52,20 @@ const SignUp = () => {
                 <form action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-4">
                         <div className="space-y-2">
-                            <label forHtml="name" className="block text-sm">Name</label>
+                            <label htmlFor="name" className="block text-sm">Name</label>
                             <input type="text" name="name" id="name" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
                                 onChange={e => setName(e.target.value)}
                             />
                         </div>
                         <div className="space-y-2">
-                            <label forHtml="email" className="block text-sm">Email address</label>
+                            <label htmlFor="email" className="block text-sm">Email address</label>
                             <input type="email" name="email" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
-                                <label forHtml="password" className="text-sm">Password</label>
+                                <label htmlFor="password" className="text-sm">Password</label>
                                 {/* <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a> */}
                             </div>
                             <input type="password" name="password" id="password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
@@ -73,10 +74,10 @@ const SignUp = () => {
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
-                                <label forHtml="password" className="text-sm">Conform Password</label>
+                                <label htmlFor="password" className="text-sm">Conform Password</label>
                                 {/* <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a> */}
                             </div>
-                            <input type="password" name="cpassword" id="password" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
+                            <input type="password" name="cpassword" id="conformpassword" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-blue-600"
                                 onChange={(e) => setCpassword(e.target.value)}
                             />
                         </div>
